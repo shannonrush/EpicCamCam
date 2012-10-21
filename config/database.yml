@@ -1,0 +1,11 @@
+development:
+  adapter: mysql2
+  database: epiccamcam_devel
+  username: 
+  password:
+
+test:
+  adapter: mysql2
+  database: epiccamcam_test
+  username:
+  password:

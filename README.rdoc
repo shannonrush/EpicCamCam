@@ -1,0 +1,1 @@
+Central server for CamCam, a DIY home surveillance system using Android handsets and Google TV
