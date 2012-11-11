@@ -4,7 +4,6 @@ class DevicesController < ApplicationController
   
   def create
     device = Device.create(params[:device])
-    require 'ruby-debug';debugger;
     if device
       render :json => device.to_json
     else
