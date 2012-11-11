@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  has_many :devices
+
   validates_presence_of :email
   validates_uniqueness_of :email
   
