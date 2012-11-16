@@ -9,6 +9,8 @@ gem 'sass'
 
 gem 'capistrano'
 
+gem "paperclip", "~> 3.0"
+
 gem 'jquery-rails'
 gem 'uglifier'
 gem 'therubyracer'
