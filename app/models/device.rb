@@ -8,6 +8,7 @@ class Device < ActiveRecord::Base
   attr_accessible :name, :requested, :user_id, :gcm_id
 
   def request_feed
+
     # send gcm message to device
   
     require "net/https"
@@ -18,12 +19,26 @@ class Device < ActiveRecord::Base
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    data = {:registration_ids=>[self.gcm_id],:data=>{:requested=>true}}
+    data = {:registration_ids=>[self.gcm_id],:data=>{:requested=>true,:port => 2000}}
     
     response, dat = http.post(url.path, data.to_json, headers)
     puts response.body
+    
+    Device.open_socket
+    
     # TODO Handle GCM failure
     return response.code
+  end
+
+  def self.open_socket
+    require 'socket'
+    
+    puts "opening socket"
+    socket = TCPServer.new("10.0.1.32",2000)
+    connection = socket.accept
+    while line = connection.gets
+      puts line
+    end
   end
 
 end
