@@ -5,7 +5,6 @@ class FeedsController < ApplicationController
   def request_feed
     device = Device.find(params[:device_id])
     device.update_attribute(:requested,true)
-    device.feeds.destroy_all
     gcm_message_status = device.request_feed
     puts gcm_message_status
     render :json => {"gcm_message_status" => gcm_message_status}

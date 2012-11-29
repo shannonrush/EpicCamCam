@@ -32,7 +32,7 @@ class Device < ActiveRecord::Base
 
   def self.open_socket
     require 'socket'
-    
+
     puts "opening socket"
     socket = TCPServer.new("10.0.1.32",2000)
     connection = socket.accept
